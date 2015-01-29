@@ -11,7 +11,8 @@ namespace Space_Invaders
     {
         static void Main(string[] args)
         {
-            Game game = new Game("Space Invaders", 460, 480, 60, false);
+            Game game = new Game("Space Invaders", 720, 480, 60, false);
+            game.FirstScene = new Scenes.Menue();
             game.Start();
         }
     }
