@@ -1,0 +1,2 @@
+Spielerschiffe: 	http://androidarts.com/spaceconquest/ship_designs/moo_blue_ships.jpg
+Gegnerschiffe: 		http://androidarts.com/spaceconquest/ship_designs/master_of_orion_race_ships2.jpg

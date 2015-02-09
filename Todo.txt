@@ -1,0 +1,16 @@
+- Gegner die oben sind
+- Barrieren zum Schutz
+- Gegner die schießen
+- Beim Gegner Tod Waffenupgrade fallen lassen
+- Raketen droppen
+- Raketen Explosionen (mit Screenshake usw)
+- Boss gegner nach allen 5 Wellen
+- Zufällige Asteroiden
+- Gegner beim sterben in Teile auflösen
+
+Powerups
+- x Sekunden Unbesiegbar
+- Raketen
+- Waffen Upgrades
+- Extraleben
+- etc. 

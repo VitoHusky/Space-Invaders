@@ -102,7 +102,7 @@ namespace Otter {
         public bool Paused = false;
 
         /// <summary>
-        /// The default value of the Smooth property on graphic objects.
+        /// The default value of the Smooth property on graphic Entities.
         /// </summary>
         public bool SmoothAll;
 

@@ -12,13 +12,16 @@ namespace Space_Invaders.Scenes
         public Menue() : base()
         {
             Console.WriteLine("[Scene] Initiating \"Menue\"");
+
+            // Hintergrund
             Random random = new Random();
             for (int i = 0; i < 200; i++)
             {
-                int x = random.Next(0, 480);
-                int y = random.Next(0, 720);
-                Add(new Objects.starLine(x,y));
+                int x = random.Next(0, 720);
+                int y = random.Next(0, 480);
+                //Add(new Entities.StarLine(random, x, y));
             }
+
             Console.WriteLine("[Scene] Initiated \"Menue\"");
         }
         public override void Begin()
@@ -31,6 +34,11 @@ namespace Space_Invaders.Scenes
         {
             base.End();
             Console.WriteLine("[Scene] Scene \"Menue\" hast end.");
+        }
+        public override void Update()
+        {
+            base.Update();
+            
         }
     }
 }

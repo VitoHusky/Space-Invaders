@@ -226,7 +226,7 @@ namespace Otter {
         }
 
         /// <summary>
-        /// Choose an element out of an array of objects.
+        /// Choose an element out of an array of Entities.
         /// </summary>
         /// <typeparam name="T">The type of object.</typeparam>
         /// <param name="choices">The array of possible choices.</param>
@@ -236,7 +236,7 @@ namespace Otter {
         }
 
         /// <summary>
-        /// Choose an elemnt out of an array of objects.
+        /// Choose an elemnt out of an array of Entities.
         /// </summary>
         /// <typeparam name="T">The type of object.</typeparam>
         /// <param name="choices">The array of possible choices.</param>
@@ -267,7 +267,7 @@ namespace Otter {
         }
 
         /// <summary>
-        /// Shuffle an array of objects.
+        /// Shuffle an array of Entities.
         /// </summary>
         /// <typeparam name="T">The type of object.</typeparam>
         /// <param name="list">The array to shuffle.</param>
@@ -283,7 +283,7 @@ namespace Otter {
         }
 
         /// <summary>
-        /// Shuffle a list of objects.
+        /// Shuffle a list of Entities.
         /// </summary>
         /// <typeparam name="T">The type of object.</typeparam>
         /// <param name="list">The list to shuffle.</param>

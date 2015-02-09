@@ -41,19 +41,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\starLine.cs" />
+    <Compile Include="Assets.cs" />
+    <Compile Include="Entities\Weapon_Primary.cs" />
+    <Compile Include="Entities\Weapon_Primary_Shot.cs" />
+    <Compile Include="Entities\Weapon_Secondary.cs" />
+    <Compile Include="Entities\Weapon_Secondary_Shot.cs" />
+    <Compile Include="Entities\Weapon_Shot_Trail.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Entities\MainLine.cs" />
+    <Compile Include="Entities\MenuButton.cs" />
+    <Compile Include="Entities\PlayerShip.cs" />
+    <Compile Include="Entities\StarLine.cs" />
+    <Compile Include="Entities\TextObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenes\MainGame.cs" />
     <Compile Include="Scenes\Menue.cs" />
+    <Compile Include="Scenes\Title.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Assets\Fonts\American Captain.ttf" />
+    <None Include="Assets\Fonts\digital-7.ttf" />
+    <None Include="Assets\Fonts\HOMINIS.TTF" />
+    <None Include="Assets\Sounds\Weapon_Machine_Gun.ogg" />
+    <None Include="Assets\Sounds\MenueMusic.ogg" />
+    <None Include="Assets\Sounds\Weapon_Rocket_Launcher_Finale.ogg" />
+    <None Include="Assets\Sounds\Weapon_Rocket_Launcher_Fly.ogg" />
+    <None Include="Assets\Sounds\Weapon_Rocket_Launcher_Start.ogg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Otter\Otter.csproj">
       <Project>{236485c2-a7ba-4dcd-808a-b3a634764402}</Project>
       <Name>Otter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Timer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Graphics\Ship_Level_1.png" />
+    <Content Include="Assets\Graphics\Ship_Level_2.png" />
+    <Content Include="Assets\Graphics\Ship_Level_3.png" />
+    <Content Include="Assets\Graphics\TitleBackground.png" />
+    <Content Include="Assets\Graphics\Upgrade_Weapon.png" />
+    <Content Include="Assets\Graphics\Weapon_Rocket_Launcher.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

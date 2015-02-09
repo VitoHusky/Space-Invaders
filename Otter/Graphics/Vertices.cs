@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Otter {
     /// <summary>
-    /// Graphic used for rendering a set of Vert objects.  Basically a wrapper for SFML's VertexArray.
+    /// Graphic used for rendering a set of Vert Entities.  Basically a wrapper for SFML's VertexArray.
     /// </summary>
     public class Vertices : Graphic {
 

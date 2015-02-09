@@ -56,8 +56,8 @@ namespace Otter {
         #region Static Methods
 
         /// <summary>
-        /// Add a global style to RichText objects.  The style will not be updated unless Refresh() is
-        /// called on the objects.
+        /// Add a global style to RichText Entities.  The style will not be updated unless Refresh() is
+        /// called on the Entities.
         /// </summary>
         /// <example>
         /// RichText.AddStyle("important","color:f00,waveAmpY:2,waveRate:2");
@@ -73,7 +73,7 @@ namespace Otter {
         }
 
         /// <summary>
-        /// Removes a style from all RichText objects.
+        /// Removes a style from all RichText Entities.
         /// </summary>
         /// <param name="name">The name of the style to remove.</param>
         static public void RemoveStyle(string name) {
@@ -81,7 +81,7 @@ namespace Otter {
         }
 
         /// <summary>
-        /// Remove all styles from RichText objects.
+        /// Remove all styles from RichText Entities.
         /// </summary>
         static public void ClearStyles() {
             styles.Clear();

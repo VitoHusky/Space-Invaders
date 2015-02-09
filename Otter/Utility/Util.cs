@@ -1165,7 +1165,7 @@ namespace Otter {
         /// Gets every possible combination of a List.
         /// </summary>
         /// <typeparam name="T">The type of object.</typeparam>
-        /// <param name="list">A list of objects.</param>
+        /// <param name="list">A list of Entities.</param>
         /// <returns>An IEnumerable of every possible combination in the List.</returns>
         public static IEnumerable<IEnumerable<T>> GetPowerSet<T>(List<T> list) {
             return from m in Enumerable.Range(0, 1 << list.Count)
