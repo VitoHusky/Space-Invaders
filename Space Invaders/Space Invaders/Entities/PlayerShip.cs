@@ -40,8 +40,8 @@ namespace Space_Invaders.Entities
         #region Public Overrides
         public override void Update()
         {
-            if (Scene.Timer % 10 == 0)
-                this.Y = this.BaseY + rand.Next(-10, 10);
+            //if (Scene.Timer % 10 == 0)
+                //this.Y = this.BaseY + rand.Next(-10, 10);
             base.Update();
             #region Ship Based Displays
             RocketText.String = WeaponSecondary.GetAmmo().ToString("00");
