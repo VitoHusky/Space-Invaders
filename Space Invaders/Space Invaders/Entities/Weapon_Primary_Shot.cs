@@ -18,6 +18,13 @@ namespace Space_Invaders.Entities
         private Image image = null;
         private int weaponMode = 0;
 
+        /// <summary>
+        /// The constructor to create the shot
+        /// </summary>
+        /// <param name="StartX">Shot start coordinate X</param>
+        /// <param name="StartY">Shot start coordinate Y</param>
+        /// <param name="weaponLevel">The weaponLevel</param>
+        /// <param name="playSound">Bool variable if the weapon sound should be played (If you shoot 4 shots at the same time you only need one Sound)</param>
         public Weapon_Primary_Shot(float StartX, float StartY, int weaponLevel, bool playSound = true)
             : base()
         {
@@ -66,11 +73,18 @@ namespace Space_Invaders.Entities
             if (playSound)
                 shotsound.Play();
         }
+        /// <summary>
+        /// The override to stop the sound when the shot is removed.
+        /// </summary>
         public override void Removed()
         {
             base.Removed();
             shotsound.Stop();
         }
+        /// <summary>
+        /// The override von the Update Function
+        /// Updates the Position of the Shot and creates the Shot trail
+        /// </summary>
         public override void Update()
         {
             base.Update();

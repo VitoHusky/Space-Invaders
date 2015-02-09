@@ -17,12 +17,19 @@ namespace Space_Invaders.Entities
         private int WeaponLevel = 0;
 
         // Constructor
+        /// <summary>
+        /// Empty constructor of the Secondary Weapon
+        /// </summary>
         public Weapon_Secondary()
             : base()
         {
         }
 
         // Public Methods
+        /// <summary>
+        /// The function to increase the ammo of the secondary weapon.
+        /// </summary>
+        /// <param name="val">The value how much shots should be added to the Ammo</param>
         public void GiveAmmo(int val = 1)
         {
             if (this.Ammo + val >= this.MaxAmmo)
@@ -30,10 +37,19 @@ namespace Space_Invaders.Entities
             else if (this.Ammo + val < this.MaxAmmo)
                 this.Ammo += val;
         }
+        /// <summary>
+        /// Get the current Ammo of the Weapon
+        /// </summary>
+        /// <returns>The amount of the secondary weapon</returns>
         public int GetAmmo()
         {
             return this.Ammo;
         }
+        /// <summary>
+        /// The function for the shot of the secondary weapon
+        /// </summary>
+        /// <param name="x">Start Position X</param>
+        /// <param name="y">Start Position Y</param>
         public void Shoot(float x, float y)
         {
             if (this.Ammo == -1 || this.Ammo > 0)

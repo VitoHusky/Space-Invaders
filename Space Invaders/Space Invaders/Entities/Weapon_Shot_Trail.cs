@@ -10,7 +10,12 @@ namespace Space_Invaders.Entities
     class Weapon_Shot_Trail : Entity
     {
         private Image img = null;
-
+        /// <summary>
+        /// The function to create a trail of a shot
+        /// </summary>
+        /// <param name="x">The x coordinate where the trail should be created</param>
+        /// <param name="y">The y coordinate where the trail should be created</param>
+        /// <param name="col">The color of the original shot</param>
         public Weapon_Shot_Trail(float x, float y, Color col)
             : base(x, y)
         {
@@ -19,6 +24,10 @@ namespace Space_Invaders.Entities
             SetGraphic(img);
             LifeSpan = 3;
         }
+        /// <summary>
+        /// Public override to fade out the shot depending on his current Weapon. 
+        /// Increases the opacity
+        /// </summary>
         public override void Update()
         {
             base.Update();

@@ -15,7 +15,10 @@ namespace Space_Invaders.Entities
         private int WeaponLevel = 1;
         private int MaxWeaponLevel = 5 * Weapon_Primary_Shot.MaxWeaponMode;
 
-        // Public Methods
+        #region Public Methods
+        /// <summary>
+        /// The function to increase the Weapon level plus one until the max level is reached.
+        /// </summary>
         public void Upgrade()
         {
             if (this.WeaponLevel < this.MaxWeaponLevel)
@@ -24,6 +27,11 @@ namespace Space_Invaders.Entities
                 Console.WriteLine("Weapon Primary Upgraded. New Level: " + this.WeaponLevel);
             }
         }
+        /// <summary>
+        /// Public function to create a shot. Depending on the x and y coordinate
+        /// </summary>
+        /// <param name="x">x coordinate the weapons shoots from</param>
+        /// <param name="y">y coordinate the weapons shoots from</param>
         public void Shoot(float x, float y)
         {
             if (Game.Instance.Timer - LastShot >= ShotCooldown)
@@ -71,5 +79,6 @@ namespace Space_Invaders.Entities
                 }
             }
         }
+        #endregion
     }
 }

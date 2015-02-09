@@ -22,6 +22,10 @@ namespace Space_Invaders.Entities
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Create the player ship in the middle of the game screen
+        /// </summary>
+        /// <param name="session">the player session of the player who is controling the ship.</param>
         public PlayerShip(Session session)
             : base()
         {
@@ -36,8 +40,10 @@ namespace Space_Invaders.Entities
             WeaponSecondary.GiveAmmo(5);
         }
         #endregion
-
         #region Public Overrides
+        /// <summary>
+        /// Update Function for key handling.
+        /// </summary>
         public override void Update()
         {
             //if (Scene.Timer % 10 == 0)
@@ -77,6 +83,9 @@ namespace Space_Invaders.Entities
             }
             #endregion
         }
+        /// <summary>
+        /// Override of the render function to draw the Rocket Count next to the ship
+        /// </summary>
         public override void Render()
         {
             base.Render();

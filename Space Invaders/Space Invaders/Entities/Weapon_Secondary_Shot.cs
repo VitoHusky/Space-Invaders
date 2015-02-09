@@ -17,6 +17,13 @@ namespace Space_Invaders.Entities
         private Image image = null;
         private int weaponLevel = 0;
 
+        /// <summary>
+        /// The function to create the shot of the secondary weapon
+        /// </summary>
+        /// <param name="StartX">Start Position X</param>
+        /// <param name="StartY">Start Position Y</param>
+        /// <param name="weaponLevel">The Level of the Weapon</param>
+        /// <param name="playSound">The boolean Value if the shotsound should be played</param>
         public Weapon_Secondary_Shot(float StartX, float StartY, int weaponLevel, bool playSound = true)
             : base()
         {
@@ -34,11 +41,17 @@ namespace Space_Invaders.Entities
             if (playSound)
                 shotsound.Play();
         }
+        /// <summary>
+        /// The public override to stop the sound if the shot got removed
+        /// </summary>
         public override void Removed()
         {
             base.Removed();
             shotsound.Stop();
         }
+        /// <summary>
+        /// The update override to create the trail and move the shot depending on his speed
+        /// </summary>
         public override void Update()
         {
             base.Update();

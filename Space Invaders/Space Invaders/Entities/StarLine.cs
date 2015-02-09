@@ -11,6 +11,10 @@ namespace Space_Invaders.Entities
     {
         Image imageLine = Image.CreateRectangle(1, 4, Color.Gray);
         Speed speed = new Speed(10);
+        /// <summary>
+        /// Constructor of the Star Line
+        /// </summary>
+        /// <param name="x">The x coordinate to move from</param>
         public StarLine(int x)
             : base()
         {
@@ -19,6 +23,10 @@ namespace Space_Invaders.Entities
             this.X = x;
             speed.Y = 250;
         }
+
+        /// <summary>
+        /// The update override to make the line moving.
+        /// </summary>
         public override void Update()
         {
             base.Update();
