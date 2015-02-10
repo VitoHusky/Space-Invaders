@@ -24,6 +24,7 @@ namespace Space_Invaders.Entities
             SetGraphic(img);
             LifeSpan = 3;
         }
+
         /// <summary>
         /// Public override to fade out the shot depending on his current Weapon. 
         /// Increases the opacity

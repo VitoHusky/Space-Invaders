@@ -58,7 +58,7 @@ namespace Space_Invaders.Entities
             this.Y += speed.Y;
             if (this.color != null)
                 Scene.Add(new Entities.Weapon_Shot_Trail(this.X, this.Y, this.color));
-            if (this.Y <= Global.GAME_INTERFACE_HEIGHT + 1)
+            if (this.Y <= Dimensions.GAME_INTERFACE_HEIGHT + 1)
             {
                 Scene.Remove(this);
             }

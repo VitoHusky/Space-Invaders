@@ -19,7 +19,7 @@ namespace Space_Invaders.Entities
             : base()
         {
             SetGraphic(imageLine);
-            this.Y = Global.GAME_INTERFACE_HEIGHT;
+            this.Y = Dimensions.GAME_INTERFACE_HEIGHT;
             this.X = x;
             speed.Y = 250;
         }

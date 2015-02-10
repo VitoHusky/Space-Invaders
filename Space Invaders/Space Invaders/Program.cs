@@ -12,7 +12,7 @@ namespace Space_Invaders
         static void Main(string[] args)
         {
             //Game game = new Game("Space Invaders", 640, 480, 60, false);
-            Game game = new Game("Space Invaders", 1200, 600, 60, false);
+            Game game = new Game("Space Invaders", 1200, 600, Global.GAME_FRAMES, false);
 
             Global.PlayerOne = game.AddSession("PlayerOne");
             Global.PlayerOne.Controller.Left.AddKey(Key.Left);

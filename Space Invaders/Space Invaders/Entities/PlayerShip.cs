@@ -40,6 +40,7 @@ namespace Space_Invaders.Entities
             WeaponSecondary.GiveAmmo(5);
         }
         #endregion
+
         #region Public Overrides
         /// <summary>
         /// Update Function for key handling.
@@ -73,7 +74,7 @@ namespace Space_Invaders.Entities
             if (this.PlayerSession.Controller.X.Down)
             {
                 this.WeaponPrimary.Shoot(this.X, this.Y);
-                
+                Global.Score++;
             }
             // Shoot the Secondary Weapon
             if (this.PlayerSession.Controller.Circle.Down)

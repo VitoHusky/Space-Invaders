@@ -12,8 +12,11 @@ namespace Space_Invaders
         public static Session PlayerOne = null;
         public static Session PlayerTwo = null;
 
-        public static int Weapon_Cooldown = 0;
-        public const int GAME_INTERFACE_HEIGHT = 40;
+        public const Int32 GAME_FRAMES = 60;
+
+        public static int Score = 0;
+
+        public const Int32 ENEMY_FREE_LINES = 2;
 
         public static Music Song_Title = new Music(Assets.SOUND_TITLE_MUSIC, true);
 
