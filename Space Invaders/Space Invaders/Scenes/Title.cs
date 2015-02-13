@@ -64,10 +64,16 @@ namespace Space_Invaders.Scenes
             // Wurde eine Taste gedrückt?
             if (Global.PlayerOne.Controller.Start.Pressed)
             {
-                Global.Song_Title.Stop();
-                Game.Instance.RemoveScene();
-                Game.Instance.AddScene(new Scenes.MainGame());
+                PlayGame();
+                //Glide.GlideManagerImpl.Tweener.Tween(darkScreen, new { Alpha = 1 }, 30f, 0).OnComplete(PlayGame);
             }
+        }
+
+        private void PlayGame()
+        {
+            Global.Song_Title.Stop();
+            Game.Instance.RemoveScene();
+            Game.Instance.AddScene(new Scenes.MainGame());
         }
     }
 }

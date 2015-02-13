@@ -40,11 +40,45 @@ namespace Space_Invaders
         public void AddEnemy(int x, int y, int type, int level)
         {
             //Console.WriteLine("[Enemy Manager]: Adding Enemy. Level: [" + level + "] x: [" + x + "] y: [" + y + "] Type: [" + type + "]");
-            Entities.Enemy Enemy = new Entities.Enemy(x, y, x, y);
+            Entities.Enemy Enemy = new Entities.Enemy(x, y, x, y, level);
             this.Enemies.Add(Enemy);
             Game.Instance.Scene.Add(Enemy);
         }
 
+        public void Remove(Entities.Enemy en)
+        {
+            this.Enemies.Remove(en);
+        }
+    
+        /// <summary>
+        /// Spawns all Enemies depending on the level
+        /// </summary>
+        /// <param name="level">The level of the Enemy</param>
+        public void SpawnEnemies(Int32 level)
+        {
+            Int32 EnemiesCountX = Game.Instance.Width / (Dimensions.ENEMY_WIDTH + Dimensions.ENEMY_MARGIN);
+            Int32 EnemiesCountY = Dimensions.ENEMY_FIELD_HEIGHT / (Dimensions.ENEMY_HEIGHT + Dimensions.ENEMY_MARGIN);
+            Int32 EnemyWidth = Dimensions.ENEMY_WIDTH + Dimensions.ENEMY_MARGIN;
+            Int32 EnemyHeight = Dimensions.ENEMY_HEIGHT + Dimensions.ENEMY_MARGIN;
+            for (int y = 0; y < EnemiesCountY - Global.ENEMY_FREE_LINES; y++)
+            {
+                for (int x = 0; x < EnemiesCountX; x++)
+                {
+                    Int32 PosX = x * EnemyWidth + Dimensions.ENEMY_WIDTH / 2 + Dimensions.ENEMY_MARGIN / 2;
+                    Int32 PosY = y * EnemyHeight + Dimensions.ENEMY_HEIGHT / 2 + Dimensions.ENEMY_MARGIN / 2;
+                    EnemyManager.GetInstance().AddEnemy(PosX, PosY + Dimensions.GAME_INTERFACE_HEIGHT, (int)EnemyManager.EnemyTyps.ENEMY_TYPE_NORMAL, level);
+                }
+            }
+        }
+
+
+        public void KillAllEnemies()
+        {
+            foreach (Entities.Enemy en in this.Enemies)
+            {
+                en.Destroy();
+            }
+        }
         public Int32 GetLivingEnemies()
         {
             return this.Enemies.Count;

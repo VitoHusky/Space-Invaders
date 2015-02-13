@@ -38,6 +38,7 @@ namespace Space_Invaders.Entities
             this.BaseY = this.Y;
 
             WeaponSecondary.GiveAmmo(5);
+            SetHitbox((int)this.MainModel.HalfWidth, (int)this.MainModel.HalfHeight, (int)Global.HIT_TYPES.PLAYER_SHIP);
         }
         #endregion
 
@@ -74,13 +75,22 @@ namespace Space_Invaders.Entities
             if (this.PlayerSession.Controller.X.Down)
             {
                 this.WeaponPrimary.Shoot(this.X, this.Y);
-                Global.Score++;
+                
             }
             // Shoot the Secondary Weapon
             if (this.PlayerSession.Controller.Circle.Down)
             {
                 this.WeaponSecondary.Shoot(this.X, this.Y);
                 //this.WeaponPrimary.Upgrade();
+            }
+            #endregion
+            #region Collisions
+            var collb = Collider.Collide(X, Y, (int)Global.HIT_TYPES.UPGRADE_WEAPON_PRIMARY);
+            if (collb != null)
+            {
+                Pickup b = (Pickup)collb.Entity;
+                b.Destroy();
+                this.WeaponPrimary.Upgrade();
             }
             #endregion
         }

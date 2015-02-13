@@ -13,11 +13,13 @@ namespace Space_Invaders.Entities
 
         private Sound shotsound = null;
         private Speed speed = new Speed(10.0f);
+        private Double DamagePerShot = 0;
 
         private Color color = null;
         private Image image = null;
         private int weaponMode = 0;
 
+        #region Constructor
         /// <summary>
         /// The constructor to create the shot
         /// </summary>
@@ -66,13 +68,30 @@ namespace Space_Invaders.Entities
                     break;
             }
 
+            this.DamagePerShot = this.weaponMode * Global.DAMAGE_WEAPON_PER_LEVEL;
+
             this.SetGraphic(this.image);
 
             this.X = StartX;
             this.Y = StartY;
+            this.SetHitbox(2, 2, (int)Global.HIT_TYPES.PRIMARY_SHOT);
             if (playSound)
                 shotsound.Play();
         }
+        #endregion 
+
+        #region Public Methods
+        public void Destroy()
+        {
+            this.RemoveSelf();
+        }
+        public Double GetDamage()
+        {
+            return this.DamagePerShot;
+        }
+        #endregion
+
+        #region Public Overrides
         /// <summary>
         /// The override to stop the sound when the shot is removed.
         /// </summary>
@@ -96,5 +115,6 @@ namespace Space_Invaders.Entities
                 Scene.Remove(this);
             }
         }
+        #endregion
     }
 }

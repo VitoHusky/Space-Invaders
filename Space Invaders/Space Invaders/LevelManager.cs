@@ -44,21 +44,7 @@ namespace Space_Invaders
             {
                 Console.WriteLine("[Level Manager]: Starting new Round. Current Level: " + this.CurrentLevel);
                 RoundRunning = true;
-
-                Int32 EnemiesCountX = Game.Instance.Width / (Dimensions.ENEMY_WIDTH + Dimensions.ENEMY_MARGIN);
-                Int32 EnemiesCountY = Dimensions.ENEMY_FIELD_HEIGHT / (Dimensions.ENEMY_HEIGHT + Dimensions.ENEMY_MARGIN);
-                Int32 EnemyWidth = Dimensions.ENEMY_WIDTH + Dimensions.ENEMY_MARGIN;
-                Int32 EnemyHeight = Dimensions.ENEMY_HEIGHT + Dimensions.ENEMY_MARGIN;
-                for (int y = 0; y < EnemiesCountY - Global.ENEMY_FREE_LINES; y++)
-                {
-                    for (int x = 0; x < EnemiesCountX; x++)
-                    {
-                        Int32 PosX = x * EnemyWidth + Dimensions.ENEMY_WIDTH / 2 + Dimensions.ENEMY_MARGIN / 2;
-                        Int32 PosY = y * EnemyHeight + Dimensions.ENEMY_HEIGHT / 2 + Dimensions.ENEMY_MARGIN / 2;
-                        EnemyManager.GetInstance().AddEnemy(PosX, PosY + Dimensions.GAME_INTERFACE_HEIGHT, (int)EnemyManager.EnemyTyps.ENEMY_TYPE_NORMAL, this.GetLevel());
-                    }
-                }
-
+                EnemyManager.GetInstance().SpawnEnemies(this.GetLevel());
                 Console.WriteLine("[Level Manager] Added " + EnemyManager.GetInstance().GetLivingEnemies() + " Enemies.");
             }
         }
@@ -69,6 +55,11 @@ namespace Space_Invaders
         public void IncreaseLevel()
         {
             this.CurrentLevel++;
+        }
+        public void StopLevel()
+        {
+            EnemyManager.GetInstance().KillAllEnemies();
+            this.RoundRunning = false;
         }
         #endregion
     }

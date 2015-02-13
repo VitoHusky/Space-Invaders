@@ -10,11 +10,15 @@ namespace Space_Invaders.Scenes
     class MainGame : Scene
     {
         private Random rand = null;
-        private int Round_Countdown = 500;
+        //private int Round_Countdown = 500;
+        private int Round_Countdown = 50;
+        private Boolean FirstRun = true;
 
         Entities.TextObject Text_Score = null;
         Entities.TextObject Text_Level = null;
         Entities.TextObject Text_Countdown = null;
+        Entities.TextObject Text_Enemies = null;
+        Entities.TextObject Text_BigInfo = null;
         
 
         private LevelManager LManager = LevelManager.GetInstance();
@@ -44,8 +48,9 @@ namespace Space_Invaders.Scenes
 
             Text_Score = new Entities.TextObject("Score: --", fieldWidth / 2, 2, null, 24);
             Text_Countdown = new Entities.TextObject("Countdown", Game.Instance.Width / 2, Game.Instance.Height / 2, null, 24);
+            Text_BigInfo = new Entities.TextObject("", Game.Instance.Width / 2, Game.Instance.Height / 2, null, 60);
             Text_Countdown.CenterOriginY();
-            Entity Text_Enemies = new Entities.TextObject("Gegner: --", fieldWidth + fieldWidth / 2, 2, null, 24);
+            Text_Enemies = new Entities.TextObject("Gegner: --", fieldWidth + fieldWidth / 2, 2, null, 24);
             Text_Level = new Entities.TextObject("Level: --", 2 * fieldWidth + fieldWidth / 2, 2, null, 24);
             Add(Text_Score);
             Add(Text_Enemies);
@@ -64,16 +69,39 @@ namespace Space_Invaders.Scenes
             {
                 Round_Countdown--;
 
-                if ( Round_Countdown == 0)
+                if (Round_Countdown == 0)
                 {
                     Remove(Text_Countdown);
-
+                    if (FirstRun) FirstRun = false;
+                    else Remove(Text_BigInfo);
                     LManager.InitializeLevel();
                 }
-                else Text_Countdown.SetString("Game starts in\n" + (Round_Countdown / Global.GAME_FRAMES + 1));
+                else
+                {
+                    if (FirstRun)
+                        Text_Countdown.SetString("Game starts in\n" + (Round_Countdown / Global.GAME_FRAMES + 1));
+                    else
+                        Text_Countdown.SetString("Next round starts in\n" + (Round_Countdown / Global.GAME_FRAMES + 1));
+                }
+                  
+                
+            }
+            else
+            {
+                if (EnemyManager.GetInstance().GetLivingEnemies() == 0)
+                {
+                    Add(Text_BigInfo);
+                    Add(Text_Countdown);
+                    LManager.StopLevel();
+                    LManager.IncreaseLevel();
+                    Text_BigInfo.SetString("LEVEL COMPLETED\nNext Level: " + LManager.GetLevel());
+                    Round_Countdown = 5000;
+                    
+                }
             }
             Text_Score.SetString("Score: " + Global.Score.ToString("000000"));
             Text_Level.SetString("Level: " + LManager.GetLevel().ToString("00"));
+            Text_Enemies.SetString("Gegner: " + EnemyManager.GetInstance().GetLivingEnemies().ToString("00"));
         }
     }
 }
