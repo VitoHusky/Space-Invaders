@@ -85,14 +85,43 @@ namespace Space_Invaders.Entities
             }
             #endregion
             #region Collisions
-            var collb = Collider.Collide(X, Y, (int)Global.HIT_TYPES.UPGRADE_WEAPON_PRIMARY);
+            Pickup b = CheckUpgrade((int)Global.HIT_TYPES.PICKUP);
+            if ( b != null)
+            {
+                WeaponPrimary.Upgrade();
+            }
+            
+            /*
+            var collb = Collider.Collide(X, Y, (int)Global.HIT_TYPES.PRIMARY_SHOT);
+            if (collb != null)
+            {
+                Weapon_Primary_Shot b = (Weapon_Primary_Shot)collb.Entity;
+                if (!b.IsBotWeapon())
+                {
+                    b.Destroy();
+                    this.CurrentHealth -= b.GetDamage();
+                    if (this.CurrentHealth <= 0)
+                    {
+                        this.Destroy();
+                        EnemyManager.GetInstance().Remove(this);
+                        Scene.Add(new Pickup(this.X, this.Y, (Int16)Global.PICKUPTYPES.UPGRADE_WEAPON_PRIMARY));
+                        return;
+                    }
+                }
+            }*/
+            #endregion
+        }
+
+        private Pickup CheckUpgrade(int tag)
+        {
+            var collb = Collider.Collide(X, Y, (int)Global.HIT_TYPES.PICKUP);
             if (collb != null)
             {
                 Pickup b = (Pickup)collb.Entity;
                 b.Destroy();
-                this.WeaponPrimary.Upgrade();
+                return b;
             }
-            #endregion
+            return null;
         }
         /// <summary>
         /// Override of the render function to draw the Rocket Count next to the ship

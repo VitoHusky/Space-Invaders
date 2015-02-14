@@ -35,7 +35,7 @@ namespace Space_Invaders.Entities
             img.CenterOrigin();
             this.SetGraphic(img);
 
-            CircleCollider col = new CircleCollider((int)this.img.HalfWidth, (int)Global.HIT_TYPES.UPGRADE_WEAPON_PRIMARY);
+            CircleCollider col = new CircleCollider((int)this.img.HalfWidth, (int)Global.HIT_TYPES.PICKUP);
             col.CenterOrigin();
             this.AddCollider(col);
         }

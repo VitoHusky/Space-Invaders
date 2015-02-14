@@ -40,7 +40,7 @@ namespace Space_Invaders
         public void AddEnemy(int x, int y, int type, int level)
         {
             //Console.WriteLine("[Enemy Manager]: Adding Enemy. Level: [" + level + "] x: [" + x + "] y: [" + y + "] Type: [" + type + "]");
-            Entities.Enemy Enemy = new Entities.Enemy(x, y, x, y, level);
+            Entities.Enemy Enemy = new Entities.Enemy(x, y, x - Dimensions.ENEMY_MARGIN / 2, x + Dimensions.ENEMY_MARGIN / 2, level);
             this.Enemies.Add(Enemy);
             Game.Instance.Scene.Add(Enemy);
         }

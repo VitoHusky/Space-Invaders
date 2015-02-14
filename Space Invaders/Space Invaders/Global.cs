@@ -15,6 +15,9 @@ namespace Space_Invaders
         public const Double DAMAGE_ENEMY_LIVE_PER_LEVEL = 30;
         public const Double DAMAGE_WEAPON_PER_LEVEL = 12.5;
 
+        public const Int32 TIME_TILL_FIRST_ROUND = 1;
+        public const Int32 TIME_TILL_NEXT_ROUND = 10;
+
         public const Int32 SCORE_PER_ENEMY = 10;
 
         public const Int32 GAME_FRAMES = 60;
@@ -45,7 +48,7 @@ namespace Space_Invaders
 
             PRIMARY_SHOT,
 
-            UPGRADE_WEAPON_PRIMARY
+            PICKUP
         }
     }
 }

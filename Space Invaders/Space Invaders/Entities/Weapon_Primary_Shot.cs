@@ -14,6 +14,7 @@ namespace Space_Invaders.Entities
         private Sound shotsound = null;
         private Speed speed = new Speed(10.0f);
         private Double DamagePerShot = 0;
+        private Boolean Botshot = false;
 
         private Color color = null;
         private Image image = null;
@@ -27,16 +28,22 @@ namespace Space_Invaders.Entities
         /// <param name="StartY">Shot start coordinate Y</param>
         /// <param name="weaponLevel">The weaponLevel</param>
         /// <param name="playSound">Bool variable if the weapon sound should be played (If you shoot 4 shots at the same time you only need one Sound)</param>
-        public Weapon_Primary_Shot(float StartX, float StartY, int weaponLevel, bool playSound = true)
-            : base()
+        public Weapon_Primary_Shot(float StartX, float StartY, int weaponLevel, bool playSound = true, bool BotShot = false)
+            : base(StartX, StartY)
         {
             Layer = 100;
+            this.Botshot = BotShot;
 
+            int ModeCount = 0;
+            weaponMode = 1;
             for (int i = 0; i < weaponLevel; i++)
             {
-                if (weaponMode == MaxWeaponMode)
-                    weaponMode = 0;
-                weaponMode++;
+                if (ModeCount > MaxWeaponMode)
+                {
+                    ModeCount = 0;
+                    weaponMode++;
+                }
+                ModeCount++;
             }
 
             // Die Farbe des Schusses
@@ -62,7 +69,8 @@ namespace Space_Invaders.Entities
                 case 2:
                 case 3:
                 case 4:
-                    speed.Y = -5.0f;
+                    if (BotShot) speed.Y = 5.0f;
+                    else speed.Y = -5.0f;
                     this.image = Image.CreateRectangle(1, 5, this.color);
                     shotsound = new Sound(Assets.SOUND_WEAPON_MACHINE_GUN);
                     break;
@@ -72,8 +80,6 @@ namespace Space_Invaders.Entities
 
             this.SetGraphic(this.image);
 
-            this.X = StartX;
-            this.Y = StartY;
             this.SetHitbox(2, 2, (int)Global.HIT_TYPES.PRIMARY_SHOT);
             if (playSound)
                 shotsound.Play();
@@ -81,6 +87,10 @@ namespace Space_Invaders.Entities
         #endregion 
 
         #region Public Methods
+        public bool IsBotWeapon()
+        {
+            return this.Botshot;
+        }
         public void Destroy()
         {
             this.RemoveSelf();
@@ -111,6 +121,10 @@ namespace Space_Invaders.Entities
             if (this.color != null)
                 Scene.Add(new Entities.Weapon_Shot_Trail(this.X, this.Y, this.color));
             if (this.Y <= Dimensions.GAME_INTERFACE_HEIGHT + 1)
+            {
+                Scene.Remove(this);
+            }
+            else if (this.Y > Game.Instance.Height)
             {
                 Scene.Remove(this);
             }

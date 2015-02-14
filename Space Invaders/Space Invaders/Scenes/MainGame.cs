@@ -10,8 +10,7 @@ namespace Space_Invaders.Scenes
     class MainGame : Scene
     {
         private Random rand = null;
-        //private int Round_Countdown = 500;
-        private int Round_Countdown = 50;
+        private int Round_Countdown = Global.TIME_TILL_FIRST_ROUND;
         private Boolean FirstRun = true;
 
         Entities.TextObject Text_Score = null;
@@ -95,7 +94,7 @@ namespace Space_Invaders.Scenes
                     LManager.StopLevel();
                     LManager.IncreaseLevel();
                     Text_BigInfo.SetString("LEVEL COMPLETED\nNext Level: " + LManager.GetLevel());
-                    Round_Countdown = 5000;
+                    Round_Countdown = Global.TIME_TILL_NEXT_ROUND;
                     
                 }
             }
