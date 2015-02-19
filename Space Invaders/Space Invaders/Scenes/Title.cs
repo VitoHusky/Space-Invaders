@@ -32,6 +32,8 @@ namespace Space_Invaders.Scenes
             // Hintergrund Musik
             Global.Song_Title.Play();
 
+            // Variablen zurücksetzen
+            Global.KilledEnemies = 0;
 
 
             Console.WriteLine("[Scene] Initiated \"Title\"");
@@ -55,13 +57,13 @@ namespace Space_Invaders.Scenes
             enterTextBlinkWait++;
             if (enterTextBlinkWait >= 30)
             {
-                Console.WriteLine("Blinktext gets visible inverted.");
                 enterTextShowState = !enterTextShowState;
                 enterText.Visible = enterTextShowState;
                 enterTextBlinkWait = 0;
             }
 
             // Wurde eine Taste gedrückt?
+            //if (Global.PlayerOne.Controller.Start.Pressed)
             if (Global.PlayerOne.Controller.Start.Pressed)
             {
                 PlayGame();

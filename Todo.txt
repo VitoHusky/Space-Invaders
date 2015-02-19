@@ -13,4 +13,30 @@ Powerups
 - Raketen
 - Waffen Upgrades
 - Extraleben
-- etc. 
+- Instant Levelup
+- Raumschiff Upgrade
+- Waffen Degrade
+- 50% HP abziehen
+- Geschwindigkeit zusätzlich
+- Geschwindigkeit verringern
+
+
+
+Bilder
+-  
+GRAPHIC_PICKUP_UPGRADE_WEAPON
+        public enum PICKUPTYPES
+        {
+            UPGRADE_WEAPON_PRIMARY = 1,
+            AMMO_ROCKET, 
+            POWERUP_INV,
+            POWERUP_HEALTH,
+            POWERUP_LEVEL_UP/*,
+            POWERUP_PLAYER_SHIP,
+
+            DEGRADE_WEAPON_PRIMARY,
+            AMMO_ROCKET_LOOSE,
+            DEGRADE_50HEALTH,
+            UPGRADE_SPEED,
+            DEGRAGE_SPEED*/
+        }

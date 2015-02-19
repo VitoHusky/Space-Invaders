@@ -9,8 +9,6 @@ namespace Space_Invaders.Entities
 {
     class Weapon_Primary_Shot : Entity
     {
-        public const int MaxWeaponMode = 4;
-
         private Sound shotsound = null;
         private Speed speed = new Speed(10.0f);
         private Double DamagePerShot = 0;
@@ -28,23 +26,17 @@ namespace Space_Invaders.Entities
         /// <param name="StartY">Shot start coordinate Y</param>
         /// <param name="weaponLevel">The weaponLevel</param>
         /// <param name="playSound">Bool variable if the weapon sound should be played (If you shoot 4 shots at the same time you only need one Sound)</param>
-        public Weapon_Primary_Shot(float StartX, float StartY, int weaponLevel, bool playSound = true, bool BotShot = false)
+        public Weapon_Primary_Shot(float StartX, float StartY, int weaponLevel, bool playSound = true, bool BotShot = false, Weapon_Primary weapon = null)
             : base(StartX, StartY)
         {
             Layer = 100;
             this.Botshot = BotShot;
 
-            int ModeCount = 0;
-            weaponMode = 1;
-            for (int i = 0; i < weaponLevel; i++)
-            {
-                if (ModeCount > MaxWeaponMode)
-                {
-                    ModeCount = 0;
-                    weaponMode++;
-                }
-                ModeCount++;
-            }
+            if (weapon == null)
+                weaponMode = 1;
+            else
+                weaponMode = weapon.GetWeaponMode();
+            
 
             // Die Farbe des Schusses
             switch (weaponMode)

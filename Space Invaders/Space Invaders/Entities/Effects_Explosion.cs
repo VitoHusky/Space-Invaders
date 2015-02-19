@@ -12,21 +12,22 @@ namespace Space_Invaders.Entities
         public const int DESTROY_FRAME = 25;
         private int destroyFrame = 0;
         public Spritemap<string> sprite;
-        private Sound exSound = new Sound(Assets.SOUND_EFFECTS_EXPLOSION);
+        //private Sound exSound = new Sound(Assets.SOUND_EFFECTS_EXPLOSION);
 
         public Effects_Explosion(float x, float y)
             : base(x, y)
         {
             destroyFrame = DESTROY_FRAME;
 
-            // Set up our explosion animation, and play it. Lastly, set our graphic.
             sprite = new Spritemap<string>(Assets.SPRITE_EXPLOSION, 64, 64);
             sprite.Add("Emit", new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }, new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f });
 
             sprite.CenterOrigin(); 
             sprite.Play("Emit");
             Graphic = sprite;
-            exSound.Play();
+
+            Global.camShaker.ShakeCamera();
+            //exSound.Play();
         }
 
         public override void Update()

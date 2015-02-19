@@ -11,12 +11,18 @@ namespace Space_Invaders
     {
         public static Session PlayerOne = null;
         public static Session PlayerTwo = null;
+        public static Entities.CameraShaker camShaker = new Entities.CameraShaker();
+
+        public static Boolean GameRunning = false;
+        public static Int32 PlayerShipsAlive = 0;
+        public static int KilledEnemies = 0;
 
         public const Double DAMAGE_ENEMY_LIVE_PER_LEVEL = 30;
         public const Double DAMAGE_WEAPON_PER_LEVEL = 12.5;
 
-        public const Int32 TIME_TILL_FIRST_ROUND = 1;
-        public const Int32 TIME_TILL_NEXT_ROUND = 10;
+        public const Int32 TIME_TILL_FIRST_ROUND = 100;
+        public const Int32 TIME_TILL_NEXT_ROUND = 150;
+        public const Int32 TIME_UPGRADE_INVINCIBLE = 5000;
 
         public const Int32 SCORE_PER_ENEMY = 10;
 
@@ -36,10 +42,7 @@ namespace Space_Invaders
             MACHINE_GUN = 1,
             ROCKET_LAUNCHER
         }
-        public enum PICKUPTYPES
-        {
-            UPGRADE_WEAPON_PRIMARY = 1
-        }
+        
         public enum HIT_TYPES
         {
             ENEMY = 1,

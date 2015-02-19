@@ -32,10 +32,20 @@ namespace Space_Invaders.Entities
         /// <param name="val">The value how much shots should be added to the Ammo</param>
         public void GiveAmmo(int val = 1)
         {
-            if (this.Ammo + val >= this.MaxAmmo)
-                this.Ammo = this.MaxAmmo;
-            else if (this.Ammo + val < this.MaxAmmo)
-                this.Ammo += val;
+            // Negativ
+            if (val < 0)
+            {
+                if (this.Ammo > val)
+                    this.Ammo -= val;
+            }
+            // Positiv
+            else
+            {
+                if (this.Ammo + val >= this.MaxAmmo)
+                    this.Ammo = this.MaxAmmo;
+                else if (this.Ammo + val < this.MaxAmmo)
+                    this.Ammo += val;
+            }
         }
         /// <summary>
         /// Get the current Ammo of the Weapon

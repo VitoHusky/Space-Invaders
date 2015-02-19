@@ -78,6 +78,7 @@ namespace Space_Invaders
             {
                 en.Destroy();
             }
+            this.Enemies.Clear();
         }
         public Int32 GetLivingEnemies()
         {

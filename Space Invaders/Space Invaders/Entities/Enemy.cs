@@ -143,7 +143,9 @@ namespace Space_Invaders.Entities
                     {
                         this.Destroy();
                         EnemyManager.GetInstance().Remove(this);
-                        Scene.Add(new Pickup(this.X, this.Y, (Int16)Global.PICKUPTYPES.UPGRADE_WEAPON_PRIMARY));
+
+                        PickupManager.Instance.SpawnRandomUpgrade(this.X, this.Y);
+                        Global.KilledEnemies++;
                         return;
                     }
                 }
